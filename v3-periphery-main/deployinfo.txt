@@ -1,0 +1,81 @@
+For **Uniswap V3 Periphery**, you only need to deploy a **specific subset of contracts**. You **do not deploy the entire repo**—many files are just libraries, interfaces, or helpers.
+
+Here’s the **exact list of contracts you need to deploy**, in proper order:
+
+---
+
+## 1️⃣ WETH (if needed)
+for sepolia , I can use this ca
+0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14
+
+* **File:** `contracts/interfaces/external/IWETH9.sol` (or full `WETH9.sol` if deploying your own)
+* **When to deploy:** Only if the chain does **not** already have a canonical WETH.
+* **Sepolia:** You can use the existing WETH address, so deployment optional.
+
+---
+
+## 2️⃣ NFTDescriptor (Library)
+
+* **File:** `contracts/libraries/NFTDescriptor.sol`
+* **Purpose:** Provides on-chain SVG rendering for position NFTs.
+* **Important:** This is a **library**, so it must be **linked** when compiling `NonfungibleTokenPositionDescriptor`.
+
+---
+
+## 3️⃣ NonfungibleTokenPositionDescriptor
+
+* **File:** `contracts/NonfungibleTokenPositionDescriptor.sol`
+* **Constructor inputs:**
+
+  * `WETH address`
+  * Native symbol string (e.g., `"ETH"`)
+* **Purpose:** Provides metadata to the position manager NFTs.
+* **Link:** Must link `NFTDescriptor` library.
+
+---
+
+## 4️⃣ NonfungiblePositionManager
+
+* **File:** `contracts/NonfungiblePositionManager.sol`
+* **Constructor inputs:**
+
+  * `Factory address` (from Core deployment)
+  * `WETH address`
+  * `PositionDescriptor address`
+* **Purpose:** Main periphery contract for adding/removing liquidity.
+* **Equivalent to:** `addLiquidity` / `removeLiquidity` logic in V2.
+
+---
+
+## 5️⃣ SwapRouter
+
+* **File:** `contracts/SwapRouter.sol`
+* **Constructor inputs:**
+
+  * `Factory address`
+  * `WETH address`
+* **Purpose:** Main periphery contract for swaps.
+* **Equivalent to:** `UniswapV2Router02`.
+
+---
+
+## ✅ Deployment Order (Recommended)
+
+1. **WETH9.sol** (skip if canonical exists)
+
+2. **NFTDescriptor.sol (library)**
+
+3. NonfungibleTokenPositionDescriptor.sol  (link NFTDescriptor)
+4. NonfungiblePositionManager.sol (pass factory, WETH, descriptor)
+5. SwapRouter.sol (pass factory, WETH)
+
+---
+
+### ⚠️ Notes / Common Mistakes
+
+* **Do not deploy any other files** from periphery (e.g., interfaces, helpers, base contracts). They are just used at compile time.
+* **Linking NFTDescriptor** is mandatory, otherwise `NonfungibleTokenPositionDescriptor` deployment fails.
+* Make sure **WETH address matches your chain**.
+
+---
+

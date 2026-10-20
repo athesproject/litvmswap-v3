@@ -1,0 +1,112 @@
+$ npx hardhat run scripts/deploy.js --network mainnet
+[dotenv@17.2.3] injecting env (3) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+Compiling 124 files with 0.7.6
+@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol: Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+
+base64-sol/base64.sol: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.7.6;"
+
+contracts/test/OracleTest.sol:64:5: Warning: Function state mutability can be restricted to pure
+    function getChainedPrice(address[] memory tokens, int24[] memory ticks) public view returns (int256 syntheticTick) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+base64-sol/base64.sol: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.7.6;"
+
+base64-sol/base64.sol: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.7.6;"
+
+base64-sol/base64.sol: Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.7.6;"
+
+Compilation finished successfully
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+🚀 Starting Uniswap V3 deployment...
+
+📡 Network: sepolia
+👤 Deployer: 0x23D542DCEFb00b1f4268E67a0EC1EF4de0A58fe2
+Testing connection...
+✅ Connected to chain: 4441
+💰 Balance: 2.102183918624121596 ETH
+
+==================================================
+Starting deployment...
+==================================================
+
+1. Deploying NFTDescriptor...
+   ✅ Address: 0xe8ceA54a982665C4E75fD00B6de5d515313d9BA3
+   📝 TX Hash: 0x4284adb7229ac0a6a827880556befd97b363c424ab6d362b1ef44a855979e5a5
+
+2. Deploying NonfungibleTokenPositionDescriptor...
+   ✅ Address: 0xEC66f561432c3205838127fFa108877e421dC16a
+   📝 TX Hash: 0x6fd8b930800779d806f6cf28b8105e9e7de12fe7526701e7ddc4f5d9438a9a46
+
+3. Deploying NonfungiblePositionManager...
+   ✅ Address: 0x1089f046B597f259BeFDC15Bf9C90E33616BA366
+   📝 TX Hash: 0x741453d872867213c217175d51c127843cf346ac833d83934ac5416c106314a0
+
+4. Deploying SwapRouter...
+   ✅ Address: 0x60F8A7642F0aeC06cE628224E743326B23Fe5208
+   📝 TX Hash: 0x47a10d4feff75db428e26da63a77c5a301a872da94e2c1d4270fe00a919687fa
+
+5. Deploying V3Migrator...
+   ✅ Address: 0x89dd9B1757C94b1F570090cc6C74B1dE2910429c
+   📝 TX Hash: 0x9f3847b94db62e9aa34190209e9253cb1eab2a928629bbd99f5bba3bd242dbec
+
+==================================================
+🎉 DEPLOYMENT COMPLETE!
+==================================================
+
+📊 Summary:
+----------------------------------------
+NFTDescriptor: 0xe8ceA54a982665C4E75fD00B6de5d515313d9BA3
+NonfungibleTokenPositionDescriptor: 0xEC66f561432c3205838127fFa108877e421dC16a
+NonfungiblePositionManager: 0x1089f046B597f259BeFDC15Bf9C90E33616BA366
+SwapRouter: 0x60F8A7642F0aeC06cE628224E743326B23Fe5208
+V3Migrator: 0x89dd9B1757C94b1F570090cc6C74B1dE2910429c
+$
+
+
+
+
+$ npx hardhat run scripts/deploy-lens.js --n
+etwork mainnet
+[dotenv@17.2.3] injecting env (3) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+🚀 Starting Uniswap V3 Lens Contracts Deployment...
+
+📡 Network: sepolia
+👤 Deployer: 0x23D542DCEFb00b1f4268E67a0EC1EF4de0A58fe2
+Testing connection...
+✅ Connected to chain: 4441
+💰 Balance: 2.102019469274121596 ETH
+
+==================================================
+Starting lens contracts deployment...
+==================================================
+
+1. Deploying QuoterV2...
+   ✅ Address: 0x7b2F0600D70558041Ee7C271447AFAe8a5479629
+   📝 TX Hash: 0xf2bb61cdeb00bb98701e28888617777ce3297aea642ba33baabdf739fdc24234
+
+2. Deploying TickLens...
+   ✅ Address: 0x1c6EDaBb0c7e06c02C7054933D887225EA036fe6
+   📝 TX Hash: 0x37f6c8fe65a9af540c2ef6bbb5ebfa0e77e9f150e8382ca6242f2d5f78b6a9a0
+
+3. Deploying UniswapInterfaceMulticall...
+   ✅ Address: 0x9169A520C2C9837dD4930a5A9f92f1cB4Bb9CF14
+   📝 TX Hash: 0xe4be40c8d6bc7557a812aa2ed394c615f2771e93a70af9afb19efb87a2bdcf96
+
+==================================================
+🎉 LENS CONTRACTS DEPLOYMENT COMPLETE!
+==================================================
+
+📊 Summary:
+----------------------------------------
+QuoterV2: 0x7b2F0600D70558041Ee7C271447AFAe8a5479629
+TickLens: 0x1c6EDaBb0c7e06c02C7054933D887225EA036fe6
+UniswapInterfaceMulticall: 0x9169A520C2C9837dD4930a5A9f92f1cB4Bb9CF14
+
+🔍 Verification Commands:
+----------------------------------------
+npx hardhat verify --network sepolia 0x7b2F0600D70558041Ee7C271447AFAe8a5479629 "0xDE6763A041f8Fc94CA2EE5933736F78f6D1A11c5" "0x315374AA9b5536037Cc1Efeea2439CCC0913A77e"
+npx hardhat verify --network sepolia 0x1c6EDaBb0c7e06c02C7054933D887225EA036fe6
+npx hardhat verify --network sepolia 0x9169A520C2C9837dD4930a5A9f92f1cB4Bb9CF14
+$
+
