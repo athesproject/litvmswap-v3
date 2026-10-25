@@ -8,5 +8,5 @@ Include the contract and network, what an attacker can do, and the steps or a te
 within 72 hours and keep you informed until the issue is fixed.
 
 In scope: the LitVMSwap deployments listed in [DEPLOYMENTS.md](DEPLOYMENTS.md). The V3 factory is owned by the fee
-vault `0xF2DF37067a8Af0e9ae617c96C887B2FdA8eA3f10`, which is administered by the LitVM 2-of-3 Safe
-`0x868b8B48db5DDE602D24960A606A5A8F93333bf9`.
+vault `0xF2DF37067a8Af0e9ae617c96C887B2FdA8eA3f10`, which is administered through the 48-hour timelock
+`0x35774e0172571314fcDa7d602ea4D3410EE37188` by the LitVM 2-of-3 Safe `0x868b8B48db5DDE602D24960A606A5A8F93333bf9`.
